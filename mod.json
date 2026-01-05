@@ -1,14 +1,22 @@
 {
 	"geode": "4.10.0",
+
 	"gd": {
 		"win": "2.2074",
 		"android": "2.2074",
 		"mac": "2.2074",
 		"ios": "2.2074"
 	},
+
 	"id": "betterpause73",
 	"name": "Better Pause",
 	"version": "1.0.0",
 	"developer": "BowserTheBoss",
-	"description": "Temp"
+
+	"description": "A mod with info on the pause menu",
+
+	"links": {
+		"source": "https://github.com/UY-scuti73/BetterPause-Mod",
+		"community": "https://discord.gg/zHzFgWX8KW"
+	}
 }
