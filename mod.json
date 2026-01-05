@@ -18,5 +18,10 @@
 	"links": {
 		"source": "https://github.com/UY-scuti73/BetterPause-Mod",
 		"community": "https://discord.gg/zHzFgWX8KW"
-	}
+	},
+
+	"tags": [
+		"utility",
+		"interface"
+	]
 }
