@@ -19,6 +19,7 @@ class $modify(MyPauseLayer, PauseLayer) {
         setup_time(level, playLayer, -80, center);
         setup_stats(level, -125, center);
         setup_creator(level, -175, center);
+        setup_id(level, -223, center);
         //setup_rewards(level, -225, center);
     }
 
@@ -50,7 +51,11 @@ class $modify(MyPauseLayer, PauseLayer) {
         //Stars
         if (level->m_stars > 0) {
             // Star sprite
-            auto starSprite = CCSprite::createWithSpriteFrameName("star_small01_001.png");
+            std::string starOrMoon;
+            if (level->isPlatformer()) {starOrMoon = "moon_small01_001.png";}
+            else {starOrMoon = "star_small01_001.png";}
+
+            auto starSprite = CCSprite::createWithSpriteFrameName(starOrMoon.c_str());
             starSprite->setPosition(getPosition(offsetX - 6, offsetY - 22));
             starSprite->setScale(0.8f);
             this->addChild(starSprite);
@@ -175,6 +180,22 @@ class $modify(MyPauseLayer, PauseLayer) {
             creatorPointSprite->setScale(0.5f);
             this->addChild(creatorPointSprite);
         }
+    }
+
+    //Level ID
+    void setup_id(GJGameLevel* level, int offsetY, int offsetX) {
+        //ID Header
+        auto creatorlabel = CCLabelBMFont::create("Level ID:", "goldFont.fnt");
+        creatorlabel->setPosition(getPosition(offsetX, offsetY));
+        creatorlabel->setScale(0.6f);
+        this->addChild(creatorlabel);
+
+        std::string stringID = std::to_string(level->m_levelID.value());
+
+        auto creator = CCLabelBMFont::create(stringID.c_str(), "bigFont.fnt");
+        creator->setPosition(getPosition(offsetX, offsetY - 15));
+        creator->setScale(0.4f);
+        this->addChild(creator);
     }
 
     //Rewards
