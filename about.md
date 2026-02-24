@@ -7,5 +7,6 @@ Contains:
 - Level duration (exact time taken for verification)
 - Level stats like likes/dislikes and downloads
 - Creator of the level and their amount of creator points
+- Level ID
 
 Enjoy!

@@ -1,5 +1,5 @@
 {
-	"geode": "5.0.0",
+	"geode": "5.0.1",
 
 	"gd": {
 		"win": "2.2081",
@@ -10,7 +10,7 @@
 
 	"id": "bowser.betterpause",
 	"name": "Better Pause",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"developer": "BowserTheBoss",
 
 	"description": "A mod with info on the pause menu",
