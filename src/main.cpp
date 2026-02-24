@@ -1,6 +1,7 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/PauseLayer.hpp>
 #include <Geode/modify/PlayLayer.hpp>
+#include <string>
 
 using namespace geode::prelude;
 
@@ -13,14 +14,40 @@ class $modify(MyPauseLayer, PauseLayer) {
         if (playLayer == nullptr) {return;}
         auto level = playLayer->m_level;
 
-        int center = 45;
+        bool difficultySet = Mod::get()->getSettingValue<bool>("difficulty");
+        bool timeSet = Mod::get()->getSettingValue<bool>("time");
+        bool statsSet = Mod::get()->getSettingValue<bool>("stats");
+        bool creatorSet = Mod::get()->getSettingValue<bool>("creator");
+        bool idSet = Mod::get()->getSettingValue<bool>("id");
+        bool rewardsSet = Mod::get()->getSettingValue<bool>("rewards");
 
-        setup_difficulty(level, -40, center);
-        setup_time(level, playLayer, -80, center);
-        setup_stats(level, -125, center);
-        setup_creator(level, -175, center);
-        setup_id(level, -223, center);
-        //setup_rewards(level, -225, center);
+        int center = 45;
+        int yoffset = -40;
+
+        if (difficultySet) {
+            setup_difficulty(level, yoffset, center);
+            yoffset -= 40;
+        }
+        if (timeSet) {
+            setup_time(level, playLayer, yoffset, center);
+            yoffset -= 45;
+        }
+        if (statsSet) {
+            setup_stats(level, yoffset, center);
+            yoffset -= 50;
+        }
+        if (creatorSet) {
+            setup_creator(level, yoffset, center);
+            yoffset -= 48;
+        }
+        if (idSet) {
+            setup_id(level, yoffset, center);
+            yoffset -= 37;
+        }
+        if (rewardsSet)
+        {
+            setup_rewards(level, yoffset, center);
+        }
     }
 
     private:
@@ -205,6 +232,56 @@ class $modify(MyPauseLayer, PauseLayer) {
         rewardslabel->setPosition(getPosition(offsetX, offsetY));
         rewardslabel->setScale(0.6f);
         this->addChild(rewardslabel);
+
+        if (level->m_stars <= 1) {
+            auto creator = CCLabelBMFont::create("N/A", "bigFont.fnt");
+            creator->setPosition(getPosition(offsetX, offsetY - 15));
+            creator->setScale(0.4f);
+            this->addChild(creator);
+            return;
+        }
+
+        int max_orbs;
+        int max_diamonds;
+
+        getRewards(level->m_stars, max_orbs, max_diamonds);
+
+        int current_orbs = getCurrentOrbs(level->m_normalPercent.value(), max_orbs);
+        int current_diamonds = getCurrentDiamonds(level->m_normalPercent.value(), max_diamonds);
+
+        std::string orbs = std::to_string(current_orbs) + "/" + std::to_string(max_orbs);
+        std::string diamonds = std::to_string(current_diamonds) + "/" + std::to_string(max_diamonds);
+
+        int lengthOffsetOrbs = orbs.length() - 1;
+        int lengthOffsetDiamonds = diamonds.length() - 1;
+
+        //Orbs Text
+        auto orbText = CCLabelBMFont::create(orbs.c_str(), "bigFont.fnt");
+        orbText->setPosition(getPosition(offsetX - (1 + lengthOffsetOrbs*3), offsetY - 15));
+        orbText->setAnchorPoint({0.0f, 0.5f});
+        orbText->setScale(0.4f);
+        this->addChild(orbText);
+
+        //Orbs Sprite
+        auto orbSprite = CCSprite::createWithSpriteFrameName("currencyOrbIcon_001.png");
+        orbSprite->setPosition(getPosition(offsetX - (7 + lengthOffsetOrbs*3), offsetY - 15));
+        orbSprite->setScale(0.5f);
+        this->addChild(orbSprite);
+
+        if (!hasDiamonds(level)) {return;}
+
+        //Diamonds Text
+        auto diamondText = CCLabelBMFont::create(diamonds.c_str(), "bigFont.fnt");
+        diamondText->setPosition(getPosition(offsetX - (1 + lengthOffsetDiamonds*3), offsetY - 30));
+        diamondText->setAnchorPoint({0.0f, 0.5f});
+        diamondText->setScale(0.4f);
+        this->addChild(diamondText);
+
+        //Diamonds Sprite
+        auto diamondSprite = CCSprite::createWithSpriteFrameName("GJ_diamondsIcon_001.png");
+        diamondSprite->setPosition(getPosition(offsetX - (7 + lengthOffsetDiamonds*3), offsetY - 30));
+        diamondSprite->setScale(0.5f);
+        this->addChild(diamondSprite);
     }
 
     // Helper Functions
@@ -234,6 +311,69 @@ class $modify(MyPauseLayer, PauseLayer) {
         if (!userInfo) {return -1;}
 
         return userInfo->m_creatorPoints;
+    }
+
+    // Reward Helper Functions
+    int getCurrentOrbs(int percentage, int max_orbs) {
+        if (percentage < 100) {
+            double temp = max_orbs * 0.8 * percentage;
+            return std::floor(temp/100);
+        } else {
+            return max_orbs;
+        }
+    }
+
+    int getCurrentDiamonds(int percentage, int max_diamonds) {
+        return std::floor((percentage/100.0) * max_diamonds);
+    }
+
+    void getRewards(int stars, int& max_orbs, int& max_diamonds) {
+        switch (stars) {
+            case 2:
+                max_orbs = 50;
+                max_diamonds = 4;
+                break;
+            case 3:
+                max_orbs = 75;
+                max_diamonds = 5;
+                break;
+            case 4:
+                max_orbs = 125;
+                max_diamonds = 6;
+                break;
+            case 5:
+                max_orbs = 175;
+                max_diamonds = 7;
+                break;
+            case 6:
+                max_orbs = 225;
+                max_diamonds = 8;
+                break;
+            case 7:
+                max_orbs = 275;
+                max_diamonds = 9;
+                break;
+            case 8:
+                max_orbs = 350;
+                max_diamonds = 10;
+                break;
+            case 9:
+                max_orbs = 425;
+                max_diamonds = 11;
+                break;
+            case 10:
+                max_orbs = 500;
+                max_diamonds = 12;
+                break;
+            default:
+                max_orbs = -1;
+                max_diamonds = -1;
+        }
+    }
+
+    bool hasDiamonds(GJGameLevel* level) {
+        if (level->m_dailyID > 0 || level->m_gauntletLevel || level->m_gauntletLevel2) {return true;}
+        return false;
     }
 };
 

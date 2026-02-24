@@ -10,7 +10,7 @@
 
 	"id": "bowser.betterpause",
 	"name": "Better Pause",
-	"version": "1.1.1",
+	"version": "1.2.0",
 	"developer": "BowserTheBoss",
 
 	"description": "A mod with info on the pause menu",
@@ -23,5 +23,48 @@
 	"tags": [
 		"utility",
 		"interface"
-	]
+	],
+
+	"settings": {
+		"include-statistic": {
+			"type": "title",
+			"name": "Include Statistic"
+		},
+		"difficulty": {
+			"type": "bool",
+			"name": "Level Difficulty",
+			"description": "Displays level difficulty and star/moon count",
+			"default": true
+		},
+		"time": {
+			"type": "bool",
+			"name": "Level Time",
+			"description": "Displays duration of the level",
+			"default": true
+		},
+		"stats": {
+			"type": "bool",
+			"name": "Level Stats",
+			"description": "Displays level like and download count",
+			"default": true
+		},
+		"creator": {
+			"type": "bool",
+			"name": "Level Creator",
+			"description": "Displays level creator and their creator points stat",
+			"default": true
+		},
+		"id": {
+			"type": "bool",
+			"name": "Level ID",
+			"description": "Displays level ID",
+			"default": true
+		},
+		"rewards": {
+			"type": "bool",
+			"name": "Level Rewards",
+			"description": "Displays level orb and diamond rewards (if applicable)",
+			"default": true
+		}
+	}
 }
