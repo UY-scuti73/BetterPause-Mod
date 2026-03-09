@@ -26,23 +26,23 @@ class $modify(MyPauseLayer, PauseLayer) {
 
         if (difficultySet) {
             setup_difficulty(level, yoffset, center);
-            yoffset -= 40;
+            yoffset -= 39;
         }
         if (timeSet) {
             setup_time(level, playLayer, yoffset, center);
-            yoffset -= 45;
+            yoffset -= 44;
         }
         if (statsSet) {
             setup_stats(level, yoffset, center);
-            yoffset -= 50;
+            yoffset -= 49;
         }
         if (creatorSet) {
             setup_creator(level, yoffset, center);
-            yoffset -= 48;
+            yoffset -= 47;
         }
         if (idSet) {
             setup_id(level, yoffset, center);
-            yoffset -= 37;
+            yoffset -= 49;
         }
         if (rewardsSet)
         {
@@ -212,17 +212,26 @@ class $modify(MyPauseLayer, PauseLayer) {
     //Level ID
     void setup_id(GJGameLevel* level, int offsetY, int offsetX) {
         //ID Header
-        auto creatorlabel = CCLabelBMFont::create("Level ID:", "goldFont.fnt");
-        creatorlabel->setPosition(getPosition(offsetX, offsetY));
-        creatorlabel->setScale(0.6f);
-        this->addChild(creatorlabel);
+        auto IDlabel = CCLabelBMFont::create("Level ID:", "goldFont.fnt");
+        IDlabel->setPosition(getPosition(offsetX, offsetY));
+        IDlabel->setScale(0.6f);
+        this->addChild(IDlabel);
 
         std::string stringID = std::to_string(level->m_levelID.value());
 
-        auto creator = CCLabelBMFont::create(stringID.c_str(), "bigFont.fnt");
-        creator->setPosition(getPosition(offsetX, offsetY - 15));
-        creator->setScale(0.4f);
-        this->addChild(creator);
+        // ID
+        auto ID = CCLabelBMFont::create(stringID.c_str(), "bigFont.fnt");
+        ID->setPosition(getPosition(offsetX, offsetY - 15));
+        ID->setScale(0.4f);
+        this->addChild(ID);
+
+        std::string stringUpdate = "Update: " + getUpdate(level->m_levelID.value());
+
+        // Update
+        auto update = CCLabelBMFont::create(stringUpdate.c_str(), "bigFont.fnt");
+        update->setPosition(getPosition(offsetX, offsetY - 30));
+        update->setScale(0.4f);
+        this->addChild(update);
     }
 
     //Rewards
@@ -311,6 +320,37 @@ class $modify(MyPauseLayer, PauseLayer) {
         if (!userInfo) {return -1;}
 
         return userInfo->m_creatorPoints;
+    }
+
+    // Get Update
+    std::string getUpdate(int id) {
+        if (id < 1000) {
+            return "1.0";
+        } else if (id < 1800) {
+            return "1.1";
+        } else if (id < 10000) {
+            return "1.2";
+        } else if (id < 20000) {
+            return "1.3";
+        } else if (id < 100000) {
+            return "1.4";
+        } else if (id < 426309) {
+            return "1.5";
+        } else if (id < 835854) {
+            return "1.6";
+        } else if (id < 1629780) {
+            return "1.7";
+        } else if (id < 2814868) {
+            return "1.8";
+        } else if (id < 11000000) {
+            return "1.9";
+        } else if (id < 28600000) {
+            return "2.0";
+        } else if (id < 97500000) {
+            return "2.1";
+        } else {
+            return "2.2";
+        }
     }
 
     // Reward Helper Functions
