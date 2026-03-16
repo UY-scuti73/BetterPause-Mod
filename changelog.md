@@ -17,3 +17,6 @@
 ## v1.3.0
 - Added update to the ID section
 - Added this changelog
+
+## v1.3.1
+- Compiling mod using Github actions. No actual feature updates.
