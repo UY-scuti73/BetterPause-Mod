@@ -17,3 +17,9 @@
 ## v1.3.0
 - Added update to the ID section
 - Added this changelog
+
+## v1.3.1
+- Changed the way the files were configured
+
+## v1.3.2
+- Changed the icon
