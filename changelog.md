@@ -17,3 +17,9 @@
 ## v1.3.0
 - Added update to the ID section
 - Added this changelog
+
+## v1.3.1
+- Changed how the mod is compiled
+
+## v1.3.2
+- Slight change to the mod icon
