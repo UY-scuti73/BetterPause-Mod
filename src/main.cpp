@@ -21,7 +21,9 @@ class $modify(MyPauseLayer, PauseLayer) {
         bool idSet = Mod::get()->getSettingValue<bool>("id");
         bool rewardsSet = Mod::get()->getSettingValue<bool>("rewards");
 
-        int center = 45;
+        float x_offset = Mod::get()->getSettingValue<float>("x_offset");
+
+        int center = calculateOffset(x_offset);
         int yoffset = -40;
 
         if (difficultySet) {
@@ -294,6 +296,15 @@ class $modify(MyPauseLayer, PauseLayer) {
     }
 
     // Helper Functions
+
+    int calculateOffset(float offset) {
+        int left_offset = 45;
+        float constant = 195;
+
+        offset = offset + 1;
+
+        return static_cast<int>((offset * constant) + left_offset);
+    }
 
     CCPoint getPosition(int xmod, int ymod) {
         return CCPoint(
