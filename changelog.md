@@ -1,3 +1,11 @@
+## v1.5.1
+- Updated this changelog
+
+## v1.5.0
+- Added support for Robtop levels
+- Reworked the file system and how things were called
+- Added some easter eggs
+
 ## v1.4.0
 - Added a slider to change the x offset on the pause menu
 
