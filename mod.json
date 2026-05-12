@@ -1,5 +1,5 @@
 {
-	"geode": "5.0.1",
+	"geode": "5.7.1",
 
 	"gd": {
 		"win": "2.2081",
@@ -10,7 +10,7 @@
 
 	"id": "bowser.betterpause",
 	"name": "Better Pause",
-	"version": "1.4.0",
+	"version": "1.5.0",
 	"developer": "BowserTheBoss",
 
 	"description": "A mod with info on the pause menu",
@@ -79,6 +79,16 @@
 			"type": "bool",
 			"name": "Level Rewards",
 			"description": "Displays level orb and diamond rewards (if applicable)",
+			"default": true
+		},
+		"easer-eggs-title": {
+			"type": "title",
+			"name": "Include Easter Eggs"
+		},
+		"easter-egs": {
+			"type": "bool",
+			"name": "Easter Egs",
+			"description": "Includes some comical easter eggs (like in my level, *wink* *wink*). The list is small right now but more will come",
 			"default": true
 		}
 	}

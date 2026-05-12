@@ -8,10 +8,16 @@ else()
 endif()
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
-project(BetterPause VERSION 1.0.0)
+project(BetterPause VERSION ${PROJECT_VERSION})
 
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS src/*.cpp)
-add_library(${PROJECT_NAME} SHARED ${SOURCES})
+add_library(${PROJECT_NAME} SHARED ${SOURCES}
+        src/BetterPause.h
+        src/methods/setup.cpp
+        src/methods/helpers.cpp
+        src/methods/general.cpp
+        src/methods/pauseLayer.cpp
+        src/methods/exceptions.cpp)
 
 if (NOT DEFINED ENV{GEODE_SDK})
     message(FATAL_ERROR "Unable to find Geode SDK! Please define GEODE_SDK environment variable to point to Geode")
