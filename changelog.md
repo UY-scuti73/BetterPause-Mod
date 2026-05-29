@@ -1,3 +1,7 @@
+## v1.5.2
+- Made the update version more accurate, using the 
+  in game version instead of using the ID
+
 ## v1.5.1
 - Updated this changelog
 

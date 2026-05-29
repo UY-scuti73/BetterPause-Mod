@@ -34,36 +34,6 @@ int MyPauseLayer::getCreatorPoints(int id) {
     return userInfo->m_creatorPoints;
 }
 
-std::string MyPauseLayer::getUpdate(int id) {
-    if (id < 1000) {
-        return "1.0";
-    } else if (id < 1800) {
-        return "1.1";
-    } else if (id < 10000) {
-        return "1.2";
-    } else if (id < 20000) {
-        return "1.3";
-    } else if (id < 100000) {
-        return "1.4";
-    } else if (id < 426309) {
-        return "1.5";
-    } else if (id < 835854) {
-        return "1.6";
-    } else if (id < 1629780) {
-        return "1.7";
-    } else if (id < 2814868) {
-        return "1.8";
-    } else if (id < 11000000) {
-        return "1.9";
-    } else if (id < 28600000) {
-        return "2.0";
-    } else if (id < 97500000) {
-        return "2.1";
-    } else {
-        return "2.2";
-    }
-}
-
 int MyPauseLayer::getCurrentOrbs(int percentage, int max_orbs) {
     if (percentage < 100) {
         double temp = max_orbs * 0.8 * percentage;

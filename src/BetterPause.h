@@ -65,7 +65,6 @@ class $modify(MyPauseLayer, PauseLayer) {
     cocos2d::CCPoint getPosition(int xmod, int ymod);
     std::string condence(int val);
     int getCreatorPoints(int id);
-    std::string getUpdate(int id);
 
     // Reward helpers
     int getCurrentOrbs(int percentage, int max_orbs);

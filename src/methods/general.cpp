@@ -99,7 +99,9 @@ MyPauseLayer::Params MyPauseLayer::getParams(GJGameLevel* level, PlayLayer* play
 
     // ID
     std::string stringID = std::to_string(level->m_levelID.value());
-    std::string stringUpdate = "Update: " + getUpdate(level->m_levelID.value());
+
+    double versionVal = static_cast<double>(level->m_gameVersion)/10;
+    std::string stringUpdate = "Update: " + std::format("{:.1f}", versionVal);
 
     params.id = stringID;
     params.update = stringUpdate;
