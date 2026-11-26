@@ -1,16 +1,16 @@
 {
-	"geode": "5.7.1",
+	"geode": "6.0.0",
 
 	"gd": {
-		"win": "2.2081",
-		"android": "2.2081",
-		"mac": "2.2081",
-		"ios": "2.2081"
+		"win": "2.2091",
+		"android": "2.2091",
+		"mac": "2.2091",
+		"ios": "2.2091"
 	},
 
 	"id": "bowser.betterpause",
 	"name": "Better Pause",
-	"version": "1.5.2",
+	"version": "1.5.3",
 	"developer": "BowserTheBoss",
 
 	"description": "A mod with info on the pause menu",
@@ -26,17 +26,28 @@
 	],
 
 	"settings": {
-		"x-offset-title": {
+		"offset-title": {
 			"type": "title",
-			"name": "X Offset"
+			"name": "Offsets"
 		},
 		"x_offset": {
 			"type": "float",
 			"name": "X Offset",
 			"description": "How far left or right on the pause menu the info appears (-1 is left and 1 is right)",
+			"default": 0.8,
+			"min": -1.2001,
+			"max": 1.2001,
+			"control": {
+				"slider": true
+			}
+		},
+		"y_offset": {
+			"type": "float",
+			"name": "Y Offset",
+			"description": "How far up or down on the pause menu the info appears (-1 is up and 1 is down)",
 			"default": -1,
-			"min": -1,
-			"max": 1,
+			"min": -1.2001,
+			"max": 1.2001,
 			"control": {
 				"slider": true
 			}
@@ -85,9 +96,9 @@
 			"type": "title",
 			"name": "Include Easter Eggs"
 		},
-		"easter-egs": {
+		"easter_eggs": {
 			"type": "bool",
-			"name": "Easter Egs",
+			"name": "Easter Eggs",
 			"description": "Includes some comical easter eggs (like in my level, *wink* *wink*). The list is small right now but more will come",
 			"default": true
 		}

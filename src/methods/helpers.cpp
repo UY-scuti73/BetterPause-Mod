@@ -1,10 +1,17 @@
 #include "../BetterPause.h"
 
-int MyPauseLayer::calculateOffset(float offset) {
+int MyPauseLayer::calculateXOffset(float offset) {
     int left_offset = 45;
     float constant = 195;
     offset = offset + 1;
     return static_cast<int>((offset * constant) + left_offset);
+}
+
+int MyPauseLayer::calculateYOffset(float offset) {
+    int upper_offset = -40;
+    float constant = -125;
+    offset = offset + 1;
+    return static_cast<int>((offset * constant) + upper_offset);
 }
 
 cocos2d::CCPoint MyPauseLayer::getPosition(int xmod, int ymod) {

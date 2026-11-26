@@ -21,8 +21,8 @@ void MyPauseLayer::customSetup() {
 }
 
 void MyPauseLayer::setup(const Params& params, Config config) {
-    const int center = calculateOffset(config.x_offset);
-    int yoffset = -40;
+    const int center = calculateXOffset(config.x_offset);
+    int yoffset = calculateYOffset(config.y_offset);
 
     if (config.difficultySet) {
         setup_difficulty(params.feature_state, params.difficulty, params.stars, params.is_platformer, yoffset, center);
@@ -158,6 +158,7 @@ MyPauseLayer::Config::Config() {
     rewardsSet    = Mod::get()->getSettingValue<bool>("rewards");
 
     x_offset = Mod::get()->getSettingValue<float>("x_offset");
+    y_offset = Mod::get()->getSettingValue<float>("y_offset");
 
     easterEggs = Mod::get()->getSettingValue<bool>("easter_eggs");
 }

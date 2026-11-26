@@ -45,6 +45,7 @@ class $modify(MyPauseLayer, PauseLayer) {
         bool idSet;
         bool rewardsSet;
         float x_offset;
+        float y_offset;
         bool easterEggs;
         Config();
     };
@@ -61,7 +62,8 @@ class $modify(MyPauseLayer, PauseLayer) {
     void setup_rewards(bool hasOrbs, bool hasDiamonds, std::string orbs, std::string diamonds, int offsetY, int offsetX);
 
     // Helper functions
-    int calculateOffset(float offset);
+    int calculateXOffset(float offset);
+    int calculateYOffset(float offset);
     cocos2d::CCPoint getPosition(int xmod, int ymod);
     std::string condence(int val);
     int getCreatorPoints(int id);
@@ -83,5 +85,5 @@ class $modify(MyPauseLayer, PauseLayer) {
 
 // MyPlayLayer declaration
 class $modify(MyPlayLayer, PlayLayer) {
-    bool init(GJGameLevel* level, bool useReplay, bool dontCreateObjects);
+    bool init(GJGameLevel* level, bool dontCreateObjects);
 };

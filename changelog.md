@@ -1,3 +1,7 @@
+## v1.5.3
+- Updated to geode 6.0.1 and GD 2.2091
+- Added y offset.
+
 ## v1.5.2
 - Made the update version more accurate, using the 
   in game version instead of using the ID
