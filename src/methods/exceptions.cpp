@@ -112,7 +112,7 @@ void MyPauseLayer::checkMainLevels(Params* params, GJGameLevel* level) {
             constructRobtopPlatformerParam(params, "insane", percentage, 275, "2.2");
             break;
         case 3001:
-            // The Secret Hollow
+            // The Challenge
             constructRobtopLevelParam(params, "normal", percentage, 75, "2.1");
             params->timeLabel = "Tiny";
             break;
